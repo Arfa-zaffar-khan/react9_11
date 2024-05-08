@@ -105,7 +105,7 @@ export default function Home() {
 
   return (
     <>
-      <Header searchHandler={searchHandler} />
+      {/* <Header searchHandler={searchHandler} /> */}
       {render()}
     </>
   );

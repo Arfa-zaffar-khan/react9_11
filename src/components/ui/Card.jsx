@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Card({product}) {
-    const{title,thumbnail,rating,price,brand,description,discountPercentage}=product
+    const{title,thumbnail,rating,price,brand,description,discountPercentage,id}=product
   return (
     <div className="rounded-md border">
     <img
@@ -31,6 +32,13 @@ export default function Card({product}) {
           {rating}
         </span>
       </div>
+      <Link
+      to={`/product/${id}`}
+        type="button"
+        className="mt-4 inline-block text-center w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+      >
+        View
+      </Link>
       <button
         type="button"
         className="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"

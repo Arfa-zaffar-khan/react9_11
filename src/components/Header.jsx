@@ -4,20 +4,20 @@ import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { NavLink } from "react-router-dom";
 
-// const menuItems = [
-//   {
-//     name: "Home",
-//     href: "#",
-//   },
-//   {
-//     name: "About",
-//     href: "#",
-//   },
-//   {
-//     name: "Contact",
-//     href: "#",
-//   },
-// ];
+const menuItems = [
+  {
+    name: "Home",
+    href: "/",
+  },
+  {
+    name: "About",
+    href: "/about",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
+  },
+];
 
 export default function Header({ searchHandler }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -54,17 +54,21 @@ export default function Header({ searchHandler }) {
         </div>
         <div className="hidden grow items-start lg:flex">
           <ul className="ml-12 inline-flex space-x-8">
-            {/* {menuItems.map((item) => (
+            {menuItems.map((item) => (
               <li key={item.name}>
-                <a
-                  href={item.href}
-                  className="text-sm font-semibold text-gray-800 hover:text-white hover:bg-black p-2 rounded-xl"
-                >
-                  {item.name}
-                </a>
+                <NavLink
+                to={item.href}
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-sm font-semibold  hover:text-white hover:bg-black p-2 rounded-xl text-white bg-black"
+                    : "text-sm font-semibold  hover:text-white hover:bg-black p-2 rounded-xl text-gray-800"
+                }
+              >
+                {item.name}
+              </NavLink>
               </li>
-            ))} */}
-            <li>
+            ))}
+            {/* <li>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -99,7 +103,7 @@ export default function Header({ searchHandler }) {
               >
                 Contact
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
 
