@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, ShoppingCartIcon, X } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const menuItems = [
   {
@@ -22,6 +23,7 @@ const menuItems = [
 export default function Header({ searchHandler }) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [srch, setSrch] = useState();
+  const totalProducts=useSelector(state=>state.cart.totalProducts)
 
   function handleSrch(srch) {
     setSrch(srch);
@@ -33,7 +35,7 @@ export default function Header({ searchHandler }) {
   };
 
   return (
-    <div className="relative w-full bg-white shadow-xl">
+    <div className=" w-full bg-white shadow-xl  sticky top-0">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
           <span>
@@ -114,13 +116,13 @@ export default function Header({ searchHandler }) {
           value={srch}
           onInput={(e) => handleSrch(e.target.value)}
         ></input>
-
-        <div className="hidden lg:block">
+  
+        <div className="hidden lg:block relative">
           <Link
             to="/cart"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            className=""
           >
-            Button text
+           <ShoppingCartIcon/><sup className="absolute right-[-5px] font-bold text-md">{totalProducts}</sup>
           </Link>
         </div>
         <div className="lg:hidden">
