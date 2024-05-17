@@ -10,6 +10,7 @@ import Error from "./pages/Error.jsx";
 import Root from "./pages/Root.jsx";
 import Product,{productLoader} from "./pages/Product.jsx";
 import Cart from "./pages/Cart.jsx";
+import Checkout from "./pages/Checkout.jsx";
 const wait = (time) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
       {
         path:"/product/:id",

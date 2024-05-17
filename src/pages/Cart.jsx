@@ -1,7 +1,7 @@
 import { Heart, Trash } from "lucide-react";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { removeToCart } from "../store/features/cartSlice";
+import { checkout, removeToCart } from "../store/features/cartSlice";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
@@ -12,9 +12,7 @@ export default function Cart() {
   function handleRemove(id) {
     dispatcher(removeToCart(id));
   }
-  function handleProductquantity(id,count){
-
-  }
+ 
   return (
     <div className="mx-auto flex max-w-3xl flex-col space-y-4 p-6 px-2 sm:p-10 sm:px-2">
       <h2 className="text-3xl font-bold">Your cart</h2>
@@ -92,12 +90,12 @@ export default function Cart() {
         >
           Back to shop
         </Link>
-        <button
-          type="button"
+        <Link
+        to={"/checkout"}
           className="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
         >
           Checkout
-        </button>
+        </Link>
       </div>
     </div>
   );

@@ -3,7 +3,8 @@
 import React, { useState } from "react";
 import { Menu, ShoppingCartIcon, X } from "lucide-react";
 import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { searchProducts } from "../store/features/cartSlice";
 
 const menuItems = [
   {
@@ -20,14 +21,15 @@ const menuItems = [
   },
 ];
 
-export default function Header({ searchHandler }) {
+export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [srch, setSrch] = useState();
   const totalProducts=useSelector(state=>state.cart.totalProducts)
+const dispatch=useDispatch()
 
   function handleSrch(srch) {
     setSrch(srch);
-    searchHandler(srch);
+    dispatch(searchProducts(srch))
   }
 
   const toggleMenu = () => {

@@ -5,6 +5,7 @@ import CardSkeletonList from "../components/CardSkeletonList";
 import Error from "./Error";
 import Pagination from "../components/Pagination";
 import Categories from "../components/Categories";
+import { useSelector } from "react-redux";
 
 export default function Home() {
   const [products, setProducts] = useState([]);
@@ -14,7 +15,8 @@ export default function Home() {
   const itemsPerPage = 15;
   const [totalpages, setTotalPages] = useState(0);
   const [page, setpage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
+  const searchQuery=useSelector((state)=>state.cart.search)
   const[selectedCategory,setSelectedCategory]=useState("");
   const [categories, setCategories] = useState("");
 
@@ -62,7 +64,7 @@ export default function Home() {
 
 
   function searchHandler(srch) {
-    setpage(1);
+    // setpage(1);
     setSearchQuery(srch);
   }
 
